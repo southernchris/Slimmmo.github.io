@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--<link rel="icon" type="image/png" href="icon.png">-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bonusstyle.css">
+    <!--<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-67150336-1', 'auto');
+      ga('send', 'pageview');
+    </script>-->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/ui-bootstrap-custom-tpls-0.14.3.min.js"></script>    
+    
+    <script src="js/app.js"></script>
+    <script src="js/services/fileService.js"></script>
+    <script src="js/constants.js"></script>
+    <script src="js/constants/earth.js"></script>
+    <script src="js/constants/moon.js"></script>
+    <script src="js/constants/mars.js"></script>
+    <script src="js/constants/rain.js"></script>
+    <script src="js/calculate.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/filters.js"></script>    
+    <script src="js/adventureCtrl.js"></script>
+    <script src="js/directives/calculations.js"></script>
+    <script src="js/directives/investment-table.js"></script>
+    <script src="js/directives/upgrade-costs.js"></script>
+    <script src="js/directives/manager-upgrades.js"></script>
+    <script src="js/directives/cash-upgrades.js"></script>
+    <script src="js/directives/angel-upgrades.js"></script>
+    <script src="js/directives/gold-upgrades.js"></script>
+    <script src="js/directives/filter-recommendations.js"></script>
+    <script src="js/directives/other-bonuses.js"></script>
+    <script src="js/directives/angel-calculations.js"></script>    
+    <script src="js/directives/planet.js"></script>    
+    <title>AdVenture Capitalist Calculator</title>
+    <base href="/">
+  </head>
+    <body data-ng-app="adventureApp">
+        <div class="container-fluid col-xs-12" data-ng-controller="adventureController">
+            <div class="page-header">
+                <h1>AdVenture Capitalist Calculator </h1> v0.1<a class="pull-right" href="https://www.reddit.com/r/AdventureCapitalist/comments/3ik18l/another_calculator/">Feedback</a>
+            </div>
+            <div>
+                Load a saved state: <input type="file" id="fileInput"><button type="button" class="btn btn-primary pull-right" data-ng-click="export()">Save State</button>
+            </div>
+            <br>
+            <uib-alert data-ng-if="showUpdate" type="success" close="hideUpdate()">
+                <strong>Update!</strong> Making it Rain event Calculations are here!
+            </uib-alert>
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation" data-ng-class="{active: !isCompare() && isWorld('earth')}"><a data-ng-click="setWorld('earth')">Earth</a></li>
+                <li role="presentation" data-ng-class="{active: !isCompare() && isWorld('moon')}"><a data-ng-click="setWorld('moon')">Moon</a></li>
+                <li role="presentation" data-ng-class="{active: !isCompare() && isWorld('mars')}"><a data-ng-click="setWorld('mars')">Mars</a></li>
+                <li role="presentation" data-ng-class="{active: !isCompare() && isWorld('rain')}"><a data-ng-click="setWorld('rain')">Making it Rain</a></li>
+            </ul>
+            <planet ref="ref" raw="raw" filter-time="filterTime" illions-array="illionsArray"></planet>
+        </div>
+    </body>
+</html>
